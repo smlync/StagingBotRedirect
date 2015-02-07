@@ -29,7 +29,7 @@ namespace StagingCheckModule
             HttpRequest request = context.Request;
 
             string CurrentEnv = Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME");
-            if (CurrentEnv != null && CurrentEnv.ToLower().EndsWith("-staging.azurewebsites.net"))
+            if (!string.IsNullOrEmpty(CurrentEnv) && CurrentEnv.ToLower().EndsWith("-staging.azurewebsites.net"))
             {
                 // Detect if the user is a bot
                 if (IsBot(request.ServerVariables["HTTP_USER_AGENT"]))
