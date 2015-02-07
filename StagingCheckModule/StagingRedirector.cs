@@ -35,7 +35,7 @@ namespace StagingCheckModule
                 if (IsBot(request.ServerVariables["HTTP_USER_AGENT"]))
                 {
                     // Redirect the bot to the live website, **change to your site name**.
-                    context.Response.RedirectPermanent("http://www.yoursite.com", true); 
+                    context.Response.RedirectPermanent("http://stagingbotredirector.azurewebsites.net/", true); 
                 }
             }
         }
