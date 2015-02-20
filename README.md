@@ -25,6 +25,8 @@ I chose to do this with an HTTP Module, partly because I'm old school and partly
                 }
             }
 
+Now the second trick to get this working - it will stick if you release this and swap slots at this point. Go into the latest Azure portal (portal.azure.com at the time of writing) and add an app setting to both the production and staging slots, making sure you check the Slot Setting box. This forces the site to restart before it swaps to production. When you don't have the sticky slot setting, the site doesn't restart, and continues to get the staging value back from WEBSITE_HOSTNAME while in production. Name your sticky app setting whatever you like, it only matters that it is there. You can also set it via Powershell, if that's more your speed.
+
 To see this in action, use something that allows you to change your user agent to Googlebot and visit: http://stagingbotredirector-staging.azurewebsites.net
 
 if you do use the HTTP module method, be sure to register the module in the web.config in the system.webServer modules section. The module itself will need to have a reference added to System.Web, and then add a reference to the module project from the web project.
